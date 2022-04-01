@@ -6,6 +6,7 @@ from flask_wtf import FlaskForm
 from matplotlib.style import available
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Email, Length
+from dotenv import load_dotenv
 import certifi
 import os
 
@@ -26,7 +27,11 @@ heading = "Hello there! Try entering YOUR first name below."
     
 cert = certifi.where()
 
-client = MongoClient("mongodb+srv://randunu0:vWmkW6UoHUsCHxnb@cluster0.pywnt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", tlsCAFile=cert)
+load_dotenv() # use dotenv to hide sensitive credential as environment variables
+DATABASE_URL=f'mongodb+srv://randunu0:{os.environ.get("password")}'\
+              '@cluster0.pywnt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority' # get connection url from environment
+
+client = MongoClient(DATABASE_URL, tlsCAFile=cert)
 db = client.hw6DB
 names = db.names 
 
