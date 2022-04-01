@@ -1,0 +1,7 @@
+certifi==2021.10.8
+Flask==2.0.3
+Flask_WTF==1.0.0
+matplotlib==3.5.1
+pymongo==4.0.1
+WTForms==3.0.1
+gunicorn

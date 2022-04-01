@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>{{ h }}</h1>
+<title>{{t}}</title>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p class="error_message"><strong>{{ message }}</strong></p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<form action="{{ url_for('home') }}", method="post", class="input_form">
+    <p> {{ form.csrf_token }} </p>
+    <p> {{form.first(size=32, placeholder='First Name')}} <br></p>
+    <p> {{ form.submit() }} </p>
+</form>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EE 461L Homework 6</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+    <!--link rel="stylesheet" href="../css/styles.css"-->
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #cc5500;">
+  <a class="navbar-brand"><strong>EE461L Homework 6</strong></a>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+        <a class="nav-link active" href="{{ url_for('home') }}"><strong>Home</strong></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="{{ url_for('users') }}"><strong>Users</strong></a>
+        </li>
+    </ul>
+  </div>
+</nav>
+       {% block content %}
+       {% endblock %}
+</body>
+
+</html>

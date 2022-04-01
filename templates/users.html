@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p class="error_message"><strong>{{ message }}</strong></p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+{% if names[0] %}    
+<b>Names :</b>    
+{% for name in names %}
+        <h4> {{ name["first_name"] }} {{ name["last_name"] }}</h4>
+        <br>
+{% endfor %}
+{% else %}
+
+<h1>No Names in the DB !!</h1>    
+
+{% endif %}
+
+<form action="{{ url_for('users') }}", method="post", class="register_form">
+    <p> {{ form.hidden_tag() }}</p>
+    <p> {{ form.fname(size=32, placeholder='First Name') }} <br></p>
+    <p> {{ form.lname(size=32, placeholder='Last Name') }} <br></p>
+    <p> {{ form.submit() }} </p>
+</form>
+
+{% endblock %}
+
+
